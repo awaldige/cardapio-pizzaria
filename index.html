@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="logo aw.png" alt="Logo da Pizzaria AW" class="logo">
+            
+        </div>
+        <nav aria-label="Navegação principal">
+            <a href="#menu">Menu</a> |
+            <a href="#order-summary">Pedido</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="search">
+            <h2>Buscar no Cardápio</h2>
+            <label for="search-input">Buscar item:</label>
+            <input type="text" id="search-input" placeholder="Digite o nome do item...">
+        </section>
+
+        <section id="menu">
+            <h2>Menu</h2>
+
+            <article>
+                <h3>Pizzas</h3>
+                <ul class="menu-list">           
+                    <li class="menu-item" data-name="Pizza Margherita" data-price="25.00">Pizza Margherita - R$25.00 <button class="add-to-order" aria-label="Adicionar Pizza Margherita ao pedido">Adicionar</button></li>                                                    
+                    <li class="menu-item" data-name="Pizza de Mussarela" data-price="30.00">Pizza de Mussarela - R$30.00 <button class="add-to-order" aria-label="Adicionar Pizza de Mussarela ao pedido">Adicionar</button></li>                         
+                    <li class="menu-item" data-name="Pizza Portuguesa" data-price="32.00">Pizza Portuguesa - R$32.00 <button class="add-to-order" aria-label="Adicionar Pizza Portuguesa ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza Frango com Catupiry" data-price="30.00">Pizza Frango com Catupiry - R$30.00 <button class="add-to-order" aria-label="Adicionar Pizza Frango com Catupiry ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza Pepperoni" data-price="30.00">Pizza Pepperoni - R$30.00 <button class="add-to-order" aria-label="Adicionar Pizza Pepperoni ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza Calabresa" data-price="32.00">Pizza Calabresa - R$32.00 <button class="add-to-order" aria-label="Adicionar Pizza Calabresa ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza Quatro Queijos" data-price="35.00">Pizza Quatro Queijos - R$35.00 <button class="add-to-order" aria-label="Adicionar Pizza Quatro Queijos ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza Vegetariana" data-price="28.00">Pizza Vegetariana - R$28.00 <button class="add-to-order" aria-label="Adicionar Pizza Vegetariana ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza de Rúcula" data-price="40.00">Pizza de Rúcula - R$40.00 <button class="add-to-order" aria-label="Adicionar Pizza de Rúcula ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza de Atum" data-price="30.00">Pizza de Atum - R$30.00 <button class="add-to-order" aria-label="Adicionar Pizza de Atum ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza de Camarão" data-price="50.00">Pizza de Camarão - R$50.00 <button class="add-to-order" aria-label="Adicionar Pizza de Camarão ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pizza de Palmito" data-price="35.00">Pizza de Palmito - R$35.00 <button class="add-to-order" aria-label="Adicionar Pizza de Palmito ao pedido">Adicionar</button></li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Bebidas</h3>
+                <ul class="menu-list">
+                    <li class="menu-item" data-name="Água Mineral" data-price="3.00">Água Mineral - R$3.00 <button class="add-to-order" aria-label="Adicionar Água Mineral ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Refrigerante Lata" data-price="5.00">Refrigerante Lata - R$5.00 <button class="add-to-order" aria-label="Adicionar Refrigerante Lata ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Cerveja Lata" data-price="8.00">Cerveja Lata - R$8.00 <button class="add-to-order" aria-label="Adicionar Cerveja Lata ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Suco de Uva" data-price="6.00">Suco de Uva - R$6.00 <button class="add-to-order" aria-label="Adicionar Suco de Uva ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Suco de Morango" data-price="7.50">Suco de Morango - R$7.50 <button class="add-to-order" aria-label="Adicionar Suco de Morango ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Suco de Maracujá" data-price="6.80">Suco de Maracujá - R$6.80 <button class="add-to-order" aria-label="Adicionar Suco de Maracujá ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Suco de Laranja" data-price="5.50">Suco de Laranja - R$5.50 <button class="add-to-order" aria-label="Adicionar Suco de Laranja ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Suco de Limão" data-price="5.50">Suco de Limão - R$5.50 <button class="add-to-order" aria-label="Adicionar Suco de Limão ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Suco de Abacaxi" data-price="7.00">Suco de Abacaxi - R$7.00 <button class="add-to-order" aria-label="Adicionar Suco de Abacaxi ao pedido">Adicionar</button></li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Doces</h3>
+                <ul class="menu-list">
+                    <li class="menu-item" data-name="Pudim" data-price="10.00">Pudim - R$10.00 <button class="add-to-order" aria-label="Adicionar Pudim ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Torta de Morango" data-price="12.00">Torta de Morango - R$12.00 <button class="add-to-order" aria-label="Adicionar Torta de Morango ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Torta de Limão" data-price="12.00">Torta de Limão - R$12.00 <button class="add-to-order" aria-label="Adicionar Torta de Limão ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Bolo de Chocolate" data-price="15.00">Bolo de Chocolate - R$15.00 <button class="add-to-order" aria-label="Adicionar Bolo de Chocolate ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Pavê" data-price="12.00">Pavê - R$12.00 <button class="add-to-order" aria-label="Adicionar Pavê ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Mousse de Maracujá" data-price="10.00">Mousse de Maracujá - R$10.00 <button class="add-to-order" aria-label="Adicionar Mousse de Maracujá ao pedido">Adicionar</button></li>
+                    <li class="menu-item" data-name="Gelatina" data-price="5.00">Gelatina - R$5.00 <button class="add-to-order" aria-label="Adicionar Gelatina ao pedido">Adicionar</button></li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="order-summary">
+            <h2>Resumo do Pedido</h2>
+            <ul id="order-list">
+                <!-- Itens do pedido serão adicionados dinamicamente -->
+            </ul>
+            <p>Total: R$<span id="total-price">0.00</span></p>
+        </section>
+
+        <section id="checkout">
+            <button id="finalizar-pedido">Finalizar Pedido</button>
+        </section>
+
+        <section id="payment-methods">
+            <h2>Formas de Pagamento</h2>
+            <div id="payment-method">
+                <label for="payment">Forma de pagamento:</label>
+                <select id="payment" name="payment">
+                    <option value="debito">Débito</option>
+                    <option value="credito">Crédito</option>
+                    <option value="refeicao">Refeição</option>
+                </select>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pizzaria AW | Aberto todos os dias das 18h às 23h</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
