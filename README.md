@@ -1,55 +1,90 @@
-# 🍕 Cardápio Interativo - Pizzaria AW
+🍕 Cardápio Interativo — Pizzaria AW
 
-Projeto de cardápio digital interativo desenvolvido com **HTML**, **CSS** e **JavaScript** para uma pizzaria fictícia chamada **Pizzaria AW**. O sistema permite ao usuário visualizar os itens do menu, buscar produtos, adicionar ao pedido e simular uma forma de pagamento — tudo em uma interface simples e funcional.
+Projeto de cardápio digital interativo desenvolvido com HTML, CSS e JavaScript, simulando o sistema de pedidos online da Pizzaria AW.
 
-## 🚀 Funcionalidades
+A aplicação permite visualizar itens do menu, buscar produtos, adicionar pedidos e simular a forma de pagamento em uma interface simples, leve e funcional.
 
-- Exibição de categorias: **Pizzas**, **Bebidas** e **Doces**.
-- Campo de **busca por nome** dos itens do cardápio.
-- Botão **"Adicionar"** para incluir itens no pedido.
-- **Resumo do pedido** com cálculo automático do total.
-- Seleção da **forma de pagamento** (débito, crédito ou refeição).
-- Layout com **imagem da logo**, mas **sem imagens dos produtos**.
+Projeto criado para fins de estudo e portfólio em desenvolvimento front-end.
 
-## 🛠️ Tecnologias Utilizadas
+🚀 Funcionalidades
 
-- **HTML5** – Estruturação do conteúdo da página.
-- **CSS3** – Estilização da interface, com layout flexível.
-- **JavaScript** – Manipulação de eventos e lógica de pedido.
+📋 Exibição de categorias: Pizzas, Bebidas e Doces
 
-## 📂 Estrutura de Arquivos
+🔍 Campo de busca por nome dos itens
 
-```
-.
-├── index.html        # Página principal com o cardápio
-├── style.css         # Arquivo de estilos
-├── script.js         # Comportamento da página (JS)
-├── logo aw.png       # Logotipo da pizzaria (opcional)
-```
+➕ Botão Adicionar para incluir produtos no pedido
 
-## 💡 Como Usar
+🧾 Resumo do pedido com cálculo automático do total
 
-1. Clone ou baixe este repositório:
+💳 Seleção de forma de pagamento (débito, crédito ou refeição)
 
-```bash
+🖼️ Interface com logo da pizzaria (sem imagens dos produtos)
+
+📱 Layout leve e funcional
+
+🛠️ Tecnologias Utilizadas
+
+HTML5 — Estrutura da página
+
+CSS3 — Layout e estilização
+
+JavaScript (Vanilla JS) — Interatividade e lógica do pedido
+
+📂 Estrutura do Projeto
+cardapio-pizzaria/
+├── index.html
+├── style.css
+├── script.js
+└── logo-aw.png
+
+🌐 Acesse o Projeto Online
+
+🔗 https://cardapio-pizzaria-liart.vercel.app/
+
+📸 Prévia
+
+![IMG_1339](https://github.com/user-attachments/assets/f33960f5-3311-409b-be02-50d6b5497845)
+![IMG_1340](https://github.com/user-attachments/assets/f194e021-6c27-4ea9-9b9c-6f12ea2eae6a)
+![IMG_1341](https://github.com/user-attachments/assets/1bc2b2ab-f095-4a66-a2bd-63e370e20777)
+![IMG_1342](https://github.com/user-attachments/assets/4fba6c91-6c25-4a10-b51a-e5c498821bee)
+![IMG_1343](https://github.com/user-attachments/assets/ab4163e6-37c6-4e20-acb5-58e3c54fcb10)
+
+
+
+▶️ Como Executar Localmente
+
+Clone o repositório:
+
 git clone https://github.com/awaldige/cardapio-pizzaria.git
-```
 
-2. Abra o arquivo `index.html` em seu navegador preferido.
 
-3. Navegue pelo cardápio, adicione itens ao pedido e veja o total atualizado em tempo real.
+Acesse a pasta do projeto:
 
-## ✅ Melhorias Futuras
+cd cardapio-pizzaria
 
-- Responsividade para dispositivos móveis.
-- Validação de dados no checkout.
-- Integração com backend para envio de pedidos.
-- Opções para personalizar sabores ou ingredientes.
 
-## 📄 Licença
+Abra o arquivo index.html em qualquer navegador.
 
-Este projeto está licenciado sob a **MIT License**. Consulte o arquivo [LICENSE](LICENSE) para mais informações.
+Não é necessário backend ou servidor.
 
----
+🔮 Melhorias Futuras
 
-Desenvolvido por André Waldige ✨
+Possíveis evoluções do projeto:
+
+Layout totalmente responsivo para mobile
+
+Validação no processo de checkout
+
+Integração com backend para envio de pedidos
+
+Personalização de sabores e ingredientes
+
+Integração com WhatsApp para pedidos
+
+Sistema de login do cliente
+
+
+👨‍💻 Autor
+
+Desenvolvido por André Waldige
+Projeto criado para estudo e portfólio em desenvolvimento web.
