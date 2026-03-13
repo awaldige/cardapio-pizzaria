@@ -20,24 +20,19 @@
     <main>
         <section id="search">
             <h2>O que vamos pedir hoje?</h2>
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Ex: Margherita, Suco, Chocolate...">
-            </div>
+            <input type="text" id="search-input" placeholder="Ex: Margherita, Suco, Chocolate...">
         </section>
 
         <section id="menu">
             <h2>Cardápio</h2>
-            
             <article>
                 <h3>Pizzas</h3>
                 <ul class="menu-list" id="pizza-list"></ul>
             </article>
-
             <article>
                 <h3>Bebidas</h3>
                 <ul class="menu-list" id="drink-list"></ul>
             </article>
-
             <article>
                 <h3>Doces</h3>
                 <ul class="menu-list" id="dessert-list"></ul>
@@ -46,13 +41,10 @@
 
         <section id="order-summary">
             <h2>Resumo do Pedido</h2>
-            <ul id="order-list">
-                </ul>
-            
+            <ul id="order-list"></ul>
             <div class="total-container">
                 <p>Total: <strong>R$ <span id="total-price">0.00</span></strong></p>
             </div>
-            
             <div class="payment-box">
                 <label for="payment">Forma de pagamento:</label>
                 <select id="payment">
@@ -62,13 +54,22 @@
                     <option value="dinheiro">Dinheiro</option>
                 </select>
             </div>
-            
             <button id="finalizar-pedido" class="btn-success">Finalizar via WhatsApp</button>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Pizzaria AW | Aberto das 18h às 23h</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Pizzaria AW</h4>
+                <p>A melhor pizza da região.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Horários</h4>
+                <p>18:00 às 23:30</p>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 Pizzaria AW</p>
     </footer>
 
     <script src="js/script.js" defer></script>
