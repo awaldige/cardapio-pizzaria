@@ -42,28 +42,36 @@
             <ul class="menu-list grid-layout" id="dessert-list"></ul>
         </section>
 
-        <section id="order-summary">
-            <h2>🛒 Meu Pedido</h2>
-            <ul id="order-list"></ul>
-            
-            <div class="total-container">
-                <p>Total do Pedido: <strong>R$ <span id="total-price">0.00</span></strong></p>
-            </div>
-            
-            <div class="checkout-fields">
-                <div class="field">
-                    <label for="payment">Forma de Pagamento:</label>
-                    <select id="payment">
-                        <option value="pix">PIX</option>
-                        <option value="debito">Cartão de Débito</option>
-                        <option value="credito">Cartão de Crédito</option>
-                        <option value="dinheiro">Dinheiro</option>
-                    </select>
-                </div>
-            </div>
-            
-            <button id="finalizar-pedido" class="btn-success">Finalizar e Enviar via WhatsApp</button>
-        </section>
+       <section id="order-summary">
+    <h2>🛒 Meu Pedido</h2>
+    
+    <div class="checkout-fields" style="margin-bottom: 20px;">
+        <div class="field">
+            <label for="client-name">Seu Nome:</label>
+            <input type="text" id="client-name" placeholder="Como podemos te chamar?">
+        </div>
+    </div>
+
+    <ul id="order-list"></ul>
+    
+    <div class="total-container">
+        <p>Total do Pedido: <strong>R$ <span id="total-price">0.00</span></strong></p>
+    </div>
+    
+    <div class="checkout-fields">
+        <div class="field">
+            <label for="payment">Forma de Pagamento:</label>
+            <select id="payment">
+                <option value="pix">PIX</option>
+                <option value="debito">Cartão de Débito</option>
+                <option value="credito">Cartão de Crédito</option>
+                <option value="dinheiro">Dinheiro</option>
+            </select>
+        </div>
+    </div>
+    
+    <button id="finalizar-pedido" class="btn-success">Finalizar Pedido via WhatsApp</button>
+</section>
     </main>
 
     <footer>
