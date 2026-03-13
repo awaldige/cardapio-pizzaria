@@ -1,111 +1,24 @@
-:root {
-    --primary: #d62828;
-    --secondary: #f77f00;
-    --dark: #333;
-    --light: #fff8f0;
-    --success: #007f5f;
-    --shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    background-color: var(--light);
-    color: var(--dark);
-    padding-bottom: 50px;
-}
-
-header {
-    background: var(--primary);
-    color: white;
-    padding: 2rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-}
-
-.logo { height: 100px; margin-bottom: 10px; }
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 15px;
-    transition: opacity 0.3s;
-}
-
-main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-
-section {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
-}
-
-.menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #eee;
-    transition: background 0.2s;
-}
-
-.menu-item:hover { background: #fffcf9; }
-
-button {
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: transform 0.2s, background 0.3s;
-}
-
-button:active { transform: scale(0.95); }
-
-.add-to-order {
-    background: var(--secondary);
-    color: white;
-    padding: 8px 16px;
-}
-
-/* Carrinho Estilizado */
-#order-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px dashed #ccc;
-    animation: fadeIn 0.4s ease;
-}
-
-.remove-item {
-    background: #ff4d4d;
-    color: white;
-    padding: 4px 8px;
-    font-size: 0.8rem;
-}
-
-.btn-success {
-    width: 100%;
-    background: var(--success);
-    color: white;
-    padding: 1rem;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-#search-input {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1rem;
-}
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>Pizzaria AW</h4>
+            <p>A melhor pizza da região, feita com ingredientes selecionados e muito amor.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Horários</h4>
+            <p>Segunda a Domingo</p>
+            <p><strong>18:00 às 23:30</strong></p>
+        </div>
+        <div class="footer-section">
+            <h4>Contato</h4>
+            <p>📍 Rua das Pizzas, 123</p>
+            <div class="social-links">
+                <a href="#">📸 Instagram</a>
+                <a href="#">📘 Facebook</a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2026 Pizzaria AW - Todos os direitos reservados.</p>
+    </div>
+</footer>
