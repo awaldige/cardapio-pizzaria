@@ -1,3 +1,6 @@
+/**
+ * BANCO DE DADOS DO CARDÁPIO
+ */
 const menuData = {
     pizzas: [
         { name: "Margherita", price: 35.00 },
@@ -26,10 +29,17 @@ const menuData = {
     ]
 };
 
+// Multiplicadores de preço baseados no tamanho
 const sizeModifiers = { "grande": 1.0, "media": 0.8, "broto": 0.6 };
 
+/**
+ * ESTADO DA APLICAÇÃO
+ */
 let cart = JSON.parse(localStorage.getItem('aw_pizzaria_cart')) || [];
 
+/**
+ * INICIALIZAÇÃO
+ */
 function init() {
     renderCategory(menuData.pizzas, document.getElementById('pizza-list'), true);
     renderCategory(menuData.drinks, document.getElementById('drink-list'), false);
@@ -37,6 +47,9 @@ function init() {
     updateCartUI();
 }
 
+/**
+ * RENDERIZAÇÃO DINÂMICA
+ */
 function renderCategory(items, container, isPizza) {
     if (!container) return;
     container.innerHTML = items.map((item, idx) => {
@@ -56,17 +69,22 @@ function renderCategory(items, container, isPizza) {
                         ${menuData.pizzas.map(p => `<option value="${p.name}">${p.name}</option>`).join('')}
                     </select>
                 </div>
-            </div>` : `<p>R$ ${item.price.toFixed(2)}</p><br>`;
+            </div>` : `<p class="item-price">R$ ${item.price.toFixed(2)}</p>`;
 
         return `
             <li class="menu-item" data-name="${item.name}">
                 <h4>${item.name}</h4>
                 ${pizzaOptions}
-                <button class="add-to-order" onclick="processAdd(${idx}, '${item.name}', ${item.price}, ${isPizza})">Adicionar</button>
+                <button class="add-to-order" onclick="processAdd(${idx}, '${item.name}', ${item.price}, ${isPizza})">
+                    Adicionar ao Pedido
+                </button>
             </li>`;
     }).join('');
 }
 
+/**
+ * LÓGICA DE INTERAÇÃO (PIZZAS)
+ */
 window.toggleMeio = (el, idx) => {
     document.getElementById(`meio-box-${idx}`).style.display = el.checked ? 'block' : 'none';
 }
@@ -77,48 +95,106 @@ window.processAdd = (idx, name, price, isPizza) => {
 
     if (isPizza) {
         const size = document.getElementById(`size-${idx}`).value;
-        const isMeio = document.querySelector(`#pizza-list li:nth-child(${idx+1}) input`).checked;
+        // Busca o checkbox específico dentro do item
+        const isMeio = document.querySelector(`#pizza-list li:nth-child(${idx+1}) input[type="checkbox"]`).checked;
+        
         finalPrice = price * sizeModifiers[size];
 
         if (isMeio) {
             const sabor2 = document.getElementById(`sabor2-${idx}`).value;
-            const p2 = menuData.pizzas.find(p => p.name === sabor2).price * sizeModifiers[size];
-            finalPrice = Math.max(finalPrice, p2); // Regra comum: cobra a mais cara
-            finalName = `Meio ${name} / Meio ${sabor2} (${size})`;
+            const priceSabor2 = menuData.pizzas.find(p => p.name === sabor2).price * sizeModifiers[size];
+            
+            // Regra de negócio: cobra o valor da metade mais cara
+            finalPrice = Math.max(finalPrice, priceSabor2);
+            finalName = `Pizza Meio ${name} / Meio ${sabor2} (${size})`;
         } else {
-            finalName = `${name} (${size})`;
+            finalName = `Pizza ${name} (${size})`;
         }
     }
 
-    cart.push({ id: Date.now() + Math.random(), name: finalName, price: finalPrice });
+    // Adiciona ao array com ID único para permitir remoção individual
+    cart.push({ 
+        id: Date.now() + Math.random(), 
+        name: finalName, 
+        price: finalPrice 
+    });
+    
     updateCartUI();
 }
 
+/**
+ * ATUALIZAÇÃO DA INTERFACE DO CARRINHO
+ */
 window.removeFromCart = (id) => {
-    cart = cart.filter(i => i.id !== id);
+    cart = cart.filter(item => item.id !== id);
     updateCartUI();
 }
 
 function updateCartUI() {
     const list = document.getElementById('order-list');
-    list.innerHTML = cart.map(i => `
+    const totalPriceElement = document.getElementById('total-price');
+
+    list.innerHTML = cart.map(item => `
         <li>
-            <span>${i.name}</span>
-            <span>R$ ${i.price.toFixed(2)} <button class="remove-item" onclick="removeFromCart(${i.id})">×</button></span>
+            <span>${item.name}</span>
+            <div class="cart-actions">
+                <span>R$ ${item.price.toFixed(2)}</span>
+                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
+            </div>
         </li>`).join('');
     
-    const total = cart.reduce((acc, i) => acc + i.price, 0);
-    document.getElementById('total-price').textContent = total.toFixed(2);
+    const total = cart.reduce((acc, item) => acc + item.price, 0);
+    totalPriceElement.textContent = total.toFixed(2);
+    
+    // Salva no navegador para não perder o pedido ao atualizar a página
     localStorage.setItem('aw_pizzaria_cart', JSON.stringify(cart));
 }
 
-document.getElementById('finalizar-pedido').addEventListener('click', () => {
-    if (cart.length === 0) return alert("Seu carrinho está vazio!");
-    const payment = document.getElementById('payment').value;
-    let msg = `*🍕 NOVO PEDIDO - PIZZARIA AW*%0A*Endereço:* Rua das Pizzas, 123%0A--------------------------%0A`;
-    cart.forEach(i => msg += `• ${i.name} - R$ ${i.price.toFixed(2)}%0A`);
-    msg += `--------------------------%0A*TOTAL: R$ ${document.getElementById('total-price').textContent}*%0A*Pagamento:* ${payment.toUpperCase()}`;
-    window.open(`https://wa.me/5511985878638?text=${msg}`);
+/**
+ * SISTEMA DE BUSCA
+ */
+document.getElementById('search-input').addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    document.querySelectorAll('.menu-item').forEach(el => {
+        const name = el.dataset.name.toLowerCase();
+        el.style.display = name.includes(term) ? 'flex' : 'none';
+    });
 });
 
-init();
+/**
+ * FINALIZAÇÃO DO PEDIDO (WHATSAPP + LIMPEZA)
+ */
+document.getElementById('finalizar-pedido').addEventListener('click', () => {
+    if (cart.length === 0) {
+        alert("O seu carrinho está vazio! Escolha uma delícia primeiro.");
+        return;
+    }
+
+    const payment = document.getElementById('payment').value;
+    const total = document.getElementById('total-price').textContent;
+    
+    // Formatação da mensagem para o WhatsApp
+    let msg = `*🍕 NOVO PEDIDO - PIZZARIA AW*%0A`;
+    msg += `*Endereço:* Rua das Pizzas, 123%0A`;
+    msg += `--------------------------%0A`;
+    
+    cart.forEach(item => {
+        msg += `• ${item.name} - R$ ${item.price.toFixed(2)}%0A`;
+    });
+    
+    msg += `--------------------------%0A`;
+    msg += `*TOTAL: R$ ${total}*%0A`;
+    msg += `*Pagamento:* ${payment.toUpperCase()}`;
+
+    // Abre o WhatsApp
+    window.open(`https://wa.me/5511985878638?text=${msg}`, '_blank');
+
+    // LIMPEZA DO CARRINHO APÓS O ENVIO
+    cart = []; // Esvazia o array
+    updateCartUI(); // Atualiza a tela (total vira 0) e limpa o localStorage
+    
+    alert("Pedido enviado! O seu carrinho foi limpo com sucesso.");
+});
+
+// Inicia o app
+document.addEventListener('DOMContentLoaded', init);
