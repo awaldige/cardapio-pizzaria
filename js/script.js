@@ -1,7 +1,3 @@
-/**
- * BANCO DE DADOS: Centralização de dados para facilitar manutenção.
- * Em um projeto real, isso poderia vir de uma API.
- */
 const menuData = {
     pizzas: [
         { name: "Pizza Margherita", price: 25.00 },
@@ -39,49 +35,27 @@ const menuData = {
     ]
 };
 
-/**
- * ESTADO DA APLICAÇÃO
- * Recupera dados do localStorage ou inicia um array vazio.
- */
 let cart = JSON.parse(localStorage.getItem('aw_pizzaria_cart')) || [];
 
-// ELEMENTOS DO DOM
-const domElements = {
-    pizzaList: document.getElementById('pizza-list'),
-    drinkList: document.getElementById('drink-list'),
-    dessertList: document.getElementById('dessert-list'),
-    orderList: document.getElementById('order-list'),
-    totalPrice: document.getElementById('total-price'),
-    searchInput: document.getElementById('search-input'),
-    btnFinalizar: document.getElementById('finalizar-pedido'),
-    paymentSelect: document.getElementById('payment')
-};
+function init() {
+    renderCategory(menuData.pizzas, document.getElementById('pizza-list'));
+    renderCategory(menuData.drinks, document.getElementById('drink-list'));
+    renderCategory(menuData.desserts, document.getElementById('dessert-list'));
+    updateCartUI();
+}
 
-/**
- * RENDERIZAÇÃO DO CARDÁPIO
- */
 function renderCategory(items, container) {
     if (!container) return;
     container.innerHTML = items.map(item => `
         <li class="menu-item" data-name="${item.name}">
-            <div class="item-info">
-                <span class="item-name">${item.name}</span>
-                <span class="item-price">R$ ${item.price.toFixed(2)}</span>
-            </div>
-            <button class="add-to-order" onclick="addToCart('${item.name}', ${item.price})">
-                + Adicionar
-            </button>
+            <span>${item.name} - R$ ${item.price.toFixed(2)}</span>
+            <button class="add-to-order" onclick="addToCart('${item.name}', ${item.price})">Adicionar</button>
         </li>
     `).join('');
 }
 
-/**
- * LÓGICA DO CARRINHO
- */
 window.addToCart = (name, price) => {
-    // Cria um ID único para cada item, permitindo remover duplicatas individualmente
-    const item = { id: Date.now() + Math.random(), name, price };
-    cart.push(item);
+    cart.push({ id: Date.now() + Math.random(), name, price });
     updateCartUI();
 };
 
@@ -91,82 +65,34 @@ window.removeFromCart = (id) => {
 };
 
 function updateCartUI() {
-    // Renderiza a lista de itens no resumo
-    domElements.orderList.innerHTML = cart.map(item => `
+    const orderList = document.getElementById('order-list');
+    orderList.innerHTML = cart.map(item => `
         <li>
-            <span>${item.name}</span>
-            <div class="cart-item-actions">
-                <span>R$ ${item.price.toFixed(2)}</span>
-                <button class="remove-item" onclick="removeFromCart(${item.id})" title="Remover item">×</button>
-            </div>
+            <span>${item.name} - R$ ${item.price.toFixed(2)}</span>
+            <button class="remove-item" onclick="removeFromCart(${item.id})">Remover</button>
         </li>
     `).join('');
 
-    // Cálculo do total usando reduce (Método funcional)
     const total = cart.reduce((acc, item) => acc + item.price, 0);
-    domElements.totalPrice.textContent = total.toFixed(2);
-    
-    // Persistência de dados
+    document.getElementById('total-price').textContent = total.toFixed(2);
     localStorage.setItem('aw_pizzaria_cart', JSON.stringify(cart));
 }
 
-/**
- * BUSCA E FILTRO EM TEMPO REAL
- */
-domElements.searchInput.addEventListener('input', (e) => {
+document.getElementById('search-input').addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
-    const allItems = document.querySelectorAll('.menu-item');
-    
-    allItems.forEach(el => {
-        const name = el.dataset.name.toLowerCase();
-        // Operador ternário para controle de exibição
-        el.style.display = name.includes(term) ? 'flex' : 'none';
+    document.querySelectorAll('.menu-item').forEach(el => {
+        el.style.display = el.dataset.name.toLowerCase().includes(term) ? 'flex' : 'none';
     });
 });
 
-/**
- * INTEGRAÇÃO COM WHATSAPP
- */
-domElements.btnFinalizar.addEventListener('click', () => {
-    if (cart.length === 0) {
-        alert("Ops! Seu carrinho está vazio. Escolha uma delícia antes de finalizar!");
-        return;
-    }
-    
-    const payment = domElements.paymentSelect.value;
+document.getElementById('finalizar-pedido').addEventListener('click', () => {
+    if (cart.length === 0) return alert("Carrinho vazio!");
+    const payment = document.getElementById('payment').value;
     const total = cart.reduce((acc, item) => acc + item.price, 0);
-    
-    // Formatação da mensagem para o WhatsApp
-    let msg = `*🍕 NOVO PEDIDO - PIZZARIA AW*%0A`;
-    msg += `--------------------------------%0A`;
-    
-    // Agrupa itens repetidos para a mensagem ficar mais limpa
-    const summary = {};
-    cart.forEach(item => summary[item.name] = (summary[item.name] || 0) + 1);
-    
-    for (let name in summary) {
-        msg += `*${summary[name]}x* ${name}%0A`;
-    }
-    
-    msg += `--------------------------------%0A`;
-    msg += `*Total:* R$ ${total.toFixed(2)}%0A`;
-    msg += `*Pagamento:* ${payment.toUpperCase()}%0A%0A`;
-    msg += `_Pedido enviado via Cardápio Digital_`;
-    
-    // Seu número de WhatsApp (DDD + Número)
-    const phoneNumber = "5511985878638";
-    window.open(`https://wa.me/${phoneNumber}?text=${msg}`, '_blank');
+    let msg = `*Pedido Pizzaria AW*%0A`;
+    cart.forEach(item => msg += `• ${item.name}%0A`);
+    msg += `%0A*Total:* R$ ${total.toFixed(2)}%0A*Pagamento:* ${payment.toUpperCase()}`;
+    window.open(`https://wa.me/5511985878638?text=${msg}`);
 });
 
-/**
- * INICIALIZAÇÃO DA APLICAÇÃO
- */
-function init() {
-    renderCategory(menuData.pizzas, domElements.pizzaList);
-    renderCategory(menuData.drinks, domElements.drinkList);
-    renderCategory(menuData.desserts, domElements.dessertList);
-    updateCartUI();
-}
-
-// Garante que o script rode apenas após o DOM estar pronto
 document.addEventListener('DOMContentLoaded', init);
