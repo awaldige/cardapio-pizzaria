@@ -105,7 +105,7 @@ document.getElementById('finalizar-pedido').addEventListener('click', () => {
     cart.forEach(item => msg += `• ${item.name}%0A`);
     msg += `--------------------%0A*Total:* R$ ${total.toFixed(2)}%0A*Pagamento:* ${payment.toUpperCase()}`;
     
-    window.open(`https://wa.me/5511999999999?text=${msg}`);
+    window.open(`https://wa.me/5511985878638?text=${msg}`);
 });
 
 init();
