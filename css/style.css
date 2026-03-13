@@ -1,24 +1,133 @@
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>Pizzaria AW</h4>
-            <p>A melhor pizza da região, feita com ingredientes selecionados e muito amor.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Horários</h4>
-            <p>Segunda a Domingo</p>
-            <p><strong>18:00 às 23:30</strong></p>
-        </div>
-        <div class="footer-section">
-            <h4>Contato</h4>
-            <p>📍 Rua das Pizzas, 123</p>
-            <div class="social-links">
-                <a href="#">📸 Instagram</a>
-                <a href="#">📘 Facebook</a>
-            </div>
-        </div>
-    </div>
-    <div class="copyright">
-        <p>&copy; 2026 Pizzaria AW - Todos os direitos reservados.</p>
-    </div>
-</footer>
+:root {
+    --primary: #d62828;
+    --secondary: #f77f00;
+    --dark: #333;
+    --light: #fff8f0;
+    --success: #007f5f;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* Header & Logo */
+header {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-container { margin-bottom: 10px; }
+.logo { 
+    height: 80px; 
+    width: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+nav { margin-top: 15px; }
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+/* Menu */
+main { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+
+section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+h3 { color: var(--primary); margin: 1rem 0; border-bottom: 2px solid var(--secondary); }
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Botões */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.add-to-order {
+    background: var(--secondary);
+    color: white;
+    padding: 8px 16px;
+}
+
+.remove-item {
+    background: #ff4d4d;
+    color: white;
+    padding: 4px 8px;
+    margin-left: 10px;
+}
+
+/* Carrinho */
+#order-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed #ccc;
+    animation: fadeIn 0.4s ease;
+}
+
+.btn-success {
+    width: 100%;
+    background: var(--success);
+    color: white;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#search-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
