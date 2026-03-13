@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizzaria AW - Cardápio Digital</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="logo aw.png" alt="Logo da Pizzaria AW" class="logo">
+            <img src="assets/img/logo-aw.png" alt="Logo da Pizzaria AW" class="logo">
         </div>
         <nav aria-label="Navegação principal">
             <a href="#menu">Menu</a>
@@ -20,7 +20,9 @@
     <main>
         <section id="search">
             <h2>O que vamos pedir hoje?</h2>
-            <input type="text" id="search-input" placeholder="Ex: Margherita, Suco, Chocolate...">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Ex: Margherita, Suco, Chocolate...">
+            </div>
         </section>
 
         <section id="menu">
@@ -44,12 +46,14 @@
 
         <section id="order-summary">
             <h2>Resumo do Pedido</h2>
-            <ul id="order-list"></ul>
+            <ul id="order-list">
+                </ul>
+            
             <div class="total-container">
                 <p>Total: <strong>R$ <span id="total-price">0.00</span></strong></p>
             </div>
             
-            <div id="payment-methods">
+            <div class="payment-box">
                 <label for="payment">Forma de pagamento:</label>
                 <select id="payment">
                     <option value="pix">PIX</option>
@@ -67,6 +71,6 @@
         <p>&copy; 2026 Pizzaria AW | Aberto das 18h às 23h</p>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
