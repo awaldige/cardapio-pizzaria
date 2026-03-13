@@ -1,147 +1,111 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const menuItems = document.querySelectorAll('.menu-item');
-    const orderList = document.getElementById('order-list');
-    const totalPriceElement = document.getElementById('total-price');
-    const searchInput = document.getElementById('search-input');
-    const finalizarPedidoBtn = document.getElementById('finalizar-pedido');
+// BANCO DE DADOS COMPLETO
+const menuData = {
+    pizzas: [
+        { name: "Pizza Margherita", price: 25.00 },
+        { name: "Pizza de Mussarela", price: 30.00 },
+        { name: "Pizza Portuguesa", price: 32.00 },
+        { name: "Pizza Frango com Catupiry", price: 30.00 },
+        { name: "Pizza Pepperoni", price: 30.00 },
+        { name: "Pizza Calabresa", price: 32.00 },
+        { name: "Pizza Quatro Queijos", price: 35.00 },
+        { name: "Pizza Vegetariana", price: 28.00 },
+        { name: "Pizza de Rúcula", price: 40.00 },
+        { name: "Pizza de Atum", price: 30.00 },
+        { name: "Pizza de Camarão", price: 50.00 },
+        { name: "Pizza de Palmito", price: 35.00 }
+    ],
+    drinks: [
+        { name: "Água Mineral", price: 3.00 },
+        { name: "Refrigerante Lata", price: 5.00 },
+        { name: "Cerveja Lata", price: 8.00 },
+        { name: "Suco de Uva", price: 6.00 },
+        { name: "Suco de Morango", price: 7.50 },
+        { name: "Suco de Maracujá", price: 6.80 },
+        { name: "Suco de Laranja", price: 5.50 },
+        { name: "Suco de Limão", price: 5.50 },
+        { name: "Suco de Abacaxi", price: 7.00 }
+    ],
+    desserts: [
+        { name: "Pudim", price: 10.00 },
+        { name: "Torta de Morango", price: 12.00 },
+        { name: "Torta de Limão", price: 12.00 },
+        { name: "Bolo de Chocolate", price: 15.00 },
+        { name: "Pavê", price: 12.00 },
+        { name: "Mousse de Maracujá", price: 10.00 },
+        { name: "Gelatina", price: 5.00 }
+    ]
+};
 
-    let total = 0;
-    let orderItems = [];  // Array para armazenar os itens do pedido
+let cart = JSON.parse(localStorage.getItem('aw_pizzaria_cart')) || [];
 
-    // Função para atualizar o total
-    const updateTotal = () => {
-        totalPriceElement.textContent = total.toFixed(2);
-    };
+// ELEMENTOS DOM
+const pizzaList = document.getElementById('pizza-list');
+const drinkList = document.getElementById('drink-list');
+const dessertList = document.getElementById('dessert-list');
+const orderList = document.getElementById('order-list');
+const totalPriceElement = document.getElementById('total-price');
 
-    // Função para salvar o pedido no localStorage
-    const saveOrder = () => {
-        const orderData = {
-            items: orderItems,
-            total: total
-        };
-        localStorage.setItem('order', JSON.stringify(orderData));  // Salva o pedido no localStorage
-    };
+// INICIALIZAR CARDÁPIO
+function init() {
+    renderCategory(menuData.pizzas, pizzaList);
+    renderCategory(menuData.drinks, drinkList);
+    renderCategory(menuData.desserts, dessertList);
+    updateCartUI();
+}
 
-    // Adiciona item ao pedido
-    menuItems.forEach(item => {
-        const button = item.querySelector('button');
-        button.addEventListener('click', () => {
-            const name = item.dataset.name;
-            const price = parseFloat(item.dataset.price);
+function renderCategory(items, container) {
+    container.innerHTML = items.map(item => `
+        <li class="menu-item" data-name="${item.name}">
+            <span>${item.name} - <strong>R$ ${item.price.toFixed(2)}</strong></span>
+            <button class="add-to-order" onclick="addToCart('${item.name}', ${item.price})">Adicionar</button>
+        </li>
+    `).join('');
+}
 
-            // Cria o item na lista de pedido
-            const li = document.createElement('li');
-            li.textContent = `${name} - R$${price.toFixed(2)}`;
+// LÓGICA DO CARRINHO
+window.addToCart = (name, price) => {
+    cart.push({ id: Date.now() + Math.random(), name, price });
+    updateCartUI();
+};
 
-            // Cria o botão de remoção
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remover';
-            removeButton.classList.add('remove-item');
-            li.appendChild(removeButton);
+window.removeFromCart = (id) => {
+    cart = cart.filter(item => item.id !== id);
+    updateCartUI();
+};
 
-            orderList.appendChild(li);
+function updateCartUI() {
+    orderList.innerHTML = cart.map(item => `
+        <li>
+            <span>${item.name} (R$ ${item.price.toFixed(2)})</span>
+            <button class="remove-item" onclick="removeFromCart(${item.id})">Remover</button>
+        </li>
+    `).join('');
 
-            // Atualiza o total
-            total += price;
-            updateTotal();
+    const total = cart.reduce((acc, item) => acc + item.price, 0);
+    totalPriceElement.textContent = total.toFixed(2);
+    localStorage.setItem('aw_pizzaria_cart', JSON.stringify(cart));
+}
 
-            // Adiciona o item ao array de pedidos
-            orderItems.push({ name, price });
-
-            // Salva o pedido no localStorage
-            saveOrder();
-
-            // Evento de remoção do item
-            removeButton.addEventListener('click', () => {
-                li.remove();  // Remove o item da lista
-
-                // Subtrai o preço do item removido do total
-                total -= price;
-                updateTotal();
-
-                // Remove o item do array de pedidos
-                orderItems = orderItems.filter(orderItem => orderItem.name !== name || orderItem.price !== price);
-
-                // Atualiza o localStorage
-                saveOrder();
-            });
-        });
+// BUSCA
+document.getElementById('search-input').addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    document.querySelectorAll('.menu-item').forEach(el => {
+        el.style.display = el.dataset.name.toLowerCase().includes(term) ? 'flex' : 'none';
     });
-
-    // Busca no cardápio
-    searchInput.addEventListener('input', () => {
-        const searchValue = searchInput.value.toLowerCase();
-
-        menuItems.forEach(item => {
-            const itemName = item.dataset.name.toLowerCase();
-            const shouldShow = itemName.includes(searchValue);
-            item.style.display = shouldShow ? '' : 'none';
-        });
-    });
-
-    // Finalizar pedido
-    finalizarPedidoBtn.addEventListener('click', () => {
-        if (orderItems.length === 0) {
-            alert('Seu pedido está vazio!');
-        } else {
-            alert('Pedido finalizado com sucesso!');
-            // Limpa o pedido após finalizar
-            localStorage.removeItem('order');
-            orderItems = [];
-            total = 0;
-            orderList.innerHTML = '';  // Limpa a lista de pedidos
-            updateTotal();
-        }
-    });
-
-    // Verifica se há pedido salvo no localStorage
-    const savedOrder = localStorage.getItem('order');
-    if (savedOrder) {
-        const parsedOrder = JSON.parse(savedOrder);
-        orderItems = parsedOrder.items;
-        total = parsedOrder.total;
-        orderItems.forEach(item => {
-            const li = document.createElement('li');
-            li.textContent = `${item.name} - R$${item.price.toFixed(2)}`;
-
-            // Cria o botão de remoção
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remover';
-            removeButton.classList.add('remove-item');
-            li.appendChild(removeButton);
-
-            orderList.appendChild(li);
-
-            // Evento de remoção do item
-            removeButton.addEventListener('click', () => {
-                li.remove();  // Remove o item da lista
-
-                // Subtrai o preço do item removido do total
-                total -= item.price;
-                updateTotal();
-
-                // Remove o item do array de pedidos
-                orderItems = orderItems.filter(orderItem => orderItem.name !== item.name || orderItem.price !== item.price);
-
-                // Atualiza o localStorage
-                saveOrder();
-            });
-        });
-        updateTotal();
-    }
 });
 
+// WHATSAPP
+document.getElementById('finalizar-pedido').addEventListener('click', () => {
+    if (cart.length === 0) return alert("Adicione itens ao pedido!");
+    
+    const payment = document.getElementById('payment').value;
+    const total = cart.reduce((acc, item) => acc + item.price, 0);
+    
+    let msg = `*Pedido Pizzaria AW*%0A--------------------%0A`;
+    cart.forEach(item => msg += `• ${item.name}%0A`);
+    msg += `--------------------%0A*Total:* R$ ${total.toFixed(2)}%0A*Pagamento:* ${payment.toUpperCase()}`;
+    
+    window.open(`https://wa.me/5511999999999?text=${msg}`);
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+init();
