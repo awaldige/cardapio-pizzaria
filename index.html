@@ -4,57 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizzaria AW - Cardápio Digital</title>
+    <link rel="icon" type="image/png" href="assets/img/logo-aw.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <div class="logo-container">
-            <img src="assets/img/logo-aw.png" alt="Logo da Pizzaria AW" class="logo">
+            <img src="assets/img/logo-aw.png" alt="Logo Pizzaria AW" class="logo">
         </div>
         <nav aria-label="Navegação principal">
-            <a href="#menu">Menu</a>
+            <a href="#menu">Cardápio</a>
             <a href="#order-summary">Meu Pedido</a>
         </nav>
     </header>
 
     <main>
         <section id="search">
-            <h2>O que vamos pedir hoje?</h2>
-            <input type="text" id="search-input" placeholder="Ex: Margherita, Suco, Chocolate...">
+            <h2>Busca Rápida</h2>
+            <input type="text" id="search-input" placeholder="O que você deseja comer?">
         </section>
 
         <section id="menu">
-            <h2>Cardápio</h2>
-            <article>
-                <h3>Pizzas</h3>
-                <ul class="menu-list" id="pizza-list"></ul>
-            </article>
-            <article>
-                <h3>Bebidas</h3>
-                <ul class="menu-list" id="drink-list"></ul>
-            </article>
-            <article>
-                <h3>Doces</h3>
-                <ul class="menu-list" id="dessert-list"></ul>
-            </article>
+            <div class="category-header">
+                <h3>🍕 Pizzas</h3>
+                <p class="category-info">Escolha o tamanho e monte sua combinação!</p>
+            </div>
+            <ul class="menu-list grid-layout" id="pizza-list"></ul>
+
+            <div class="category-header">
+                <h3>🥤 Bebidas</h3>
+            </div>
+            <ul class="menu-list grid-layout" id="drink-list"></ul>
+
+            <div class="category-header">
+                <h3>🍰 Sobremesas</h3>
+            </div>
+            <ul class="menu-list grid-layout" id="dessert-list"></ul>
         </section>
 
         <section id="order-summary">
-            <h2>Resumo do Pedido</h2>
+            <h2>🛒 Meu Pedido</h2>
             <ul id="order-list"></ul>
+            
             <div class="total-container">
-                <p>Total: <strong>R$ <span id="total-price">0.00</span></strong></p>
+                <p>Total do Pedido: <strong>R$ <span id="total-price">0.00</span></strong></p>
             </div>
-            <div class="payment-box">
-                <label for="payment">Forma de pagamento:</label>
-                <select id="payment">
-                    <option value="pix">PIX</option>
-                    <option value="debito">Débito</option>
-                    <option value="credito">Crédito</option>
-                    <option value="dinheiro">Dinheiro</option>
-                </select>
+            
+            <div class="checkout-fields">
+                <div class="field">
+                    <label for="payment">Forma de Pagamento:</label>
+                    <select id="payment">
+                        <option value="pix">PIX</option>
+                        <option value="debito">Cartão de Débito</option>
+                        <option value="credito">Cartão de Crédito</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+                </div>
             </div>
-            <button id="finalizar-pedido" class="btn-success">Finalizar via WhatsApp</button>
+            
+            <button id="finalizar-pedido" class="btn-success">Finalizar e Enviar via WhatsApp</button>
         </section>
     </main>
 
@@ -62,14 +70,23 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Pizzaria AW</h4>
-                <p>A melhor pizza da região.</p>
+                <p>Sabor inigualável e tradição em cada fatia.</p>
             </div>
             <div class="footer-section">
-                <h4>Horários</h4>
-                <p>18:00 às 23:30</p>
+                <h4>Onde Estamos</h4>
+                <p>📍 Rua das Pizzas, nº 123</p>
+                <p>Bairro Gastronômico - São Paulo/SP</p>
+                <p>CEP: 01234-567</p>
+            </div>
+            <div class="footer-section">
+                <h4>Atendimento</h4>
+                <p>Segunda a Domingo</p>
+                <p><strong>18:00 às 23:30</strong></p>
             </div>
         </div>
-        <p class="copyright">&copy; 2026 Pizzaria AW</p>
+        <div class="copyright">
+            <p>&copy; 2026 Pizzaria AW - Todos os direitos reservados.</p>
+        </div>
     </footer>
 
     <script src="js/script.js" defer></script>
