@@ -1,46 +1,16 @@
-🍕 Cardápio Interativo — Pizzaria AW
+# 🍕 Cardápio Pizzaria
 
-Projeto de cardápio digital interativo desenvolvido com HTML, CSS e JavaScript, simulando o sistema de pedidos online da Pizzaria AW.
+### Cardápio digital interativo para pizzarias
 
-A aplicação permite visualizar itens do menu, buscar produtos, adicionar pedidos e simular a forma de pagamento em uma interface simples, leve e funcional.
+Projeto front-end desenvolvido para apresentar um cardápio digital de pizzaria, permitindo explorar produtos, pesquisar itens, navegar por categorias e montar pedidos de forma simples e intuitiva.
 
-Projeto criado para fins de estudo e portfólio em desenvolvimento front-end.
+A aplicação foi criada com **HTML5, CSS3 e JavaScript**, priorizando uma experiência de navegação prática, uma interface organizada e a interação dinâmica com os produtos do cardápio.
 
-🚀 Funcionalidades
+🔗 **Demonstração online:** [Acessar o Cardápio Pizzaria](https://cardapio-pizzaria-liart.vercel.app/)
 
-📋 Exibição de categorias: Pizzas, Bebidas e Doces
+---
 
-🔍 Campo de busca por nome dos itens
-
-➕ Botão Adicionar para incluir produtos no pedido
-
-🧾 Resumo do pedido com cálculo automático do total
-
-💳 Seleção de forma de pagamento (débito, crédito ou refeição)
-
-🖼️ Interface com logo da pizzaria (sem imagens dos produtos)
-
-📱 Layout leve e funcional
-
-🛠️ Tecnologias Utilizadas
-
-HTML5 — Estrutura da página
-
-CSS3 — Layout e estilização
-
-JavaScript (Vanilla JS) — Interatividade e lógica do pedido
-
-📂 Estrutura do Projeto
-cardapio-pizzaria/
-├── index.html
-├── style.css
-├── script.js
-└── logo-aw.png
-
-🌐 Acesse o Projeto Online
-
-🔗 https://cardapio-pizzaria-liart.vercel.app/
-
+---
 📸 Prévia
 
 ![IMG_1339](https://github.com/user-attachments/assets/f33960f5-3311-409b-be02-50d6b5497845)
@@ -49,42 +19,91 @@ cardapio-pizzaria/
 ![IMG_1342](https://github.com/user-attachments/assets/4fba6c91-6c25-4a10-b51a-e5c498821bee)
 ![IMG_1343](https://github.com/user-attachments/assets/ab4163e6-37c6-4e20-acb5-58e3c54fcb10)
 
+---
 
+## 📌 Sobre o projeto
 
-▶️ Como Executar Localmente
+O Cardápio Pizzaria é uma aplicação web demonstrativa que simula a experiência de consulta a um cardápio digital.
 
-Clone o repositório:
+A proposta é facilitar a visualização dos produtos e permitir que o usuário selecione os itens desejados, acompanhe seu pedido e consulte o valor total antes de finalizar a simulação.
 
+O projeto também demonstra a aplicação de conceitos fundamentais de desenvolvimento front-end, como manipulação do DOM, gerenciamento de eventos e atualização dinâmica de conteúdo com JavaScript.
+
+## ✨ Funcionalidades
+
+* 🍕 **Catálogo de produtos:** visualização dos itens disponíveis no cardápio.
+* 🔎 **Busca de produtos:** pesquisa para facilitar a localização de itens.
+* 🗂️ **Categorias:** organização dos produtos para uma navegação mais prática.
+* 🛒 **Montagem do pedido:** seleção e gerenciamento dos itens escolhidos.
+* 💰 **Cálculo do total:** atualização do valor conforme os itens do pedido.
+* 🥤 **Variedade de produtos:** estrutura para pizzas, bebidas e doces.
+* 📱 **Interface web:** acesso pelo navegador, com responsividade conforme a implementação atual.
+
+## 🛠️ Tecnologias utilizadas
+
+| Tecnologia | Aplicação                                |
+| ---------- | ---------------------------------------- |
+| HTML5      | Estrutura e organização do conteúdo      |
+| CSS3       | Estilização e apresentação visual        |
+| JavaScript | Interatividade, busca e lógica do pedido |
+| Vercel     | Hospedagem da demonstração online        |
+
+## 🚀 Como executar o projeto
+
+Você pode executar o projeto localmente seguindo estes passos:
+
+**1. Clone o repositório**
+
+```bash
 git clone https://github.com/awaldige/cardapio-pizzaria.git
+```
 
+**2. Entre na pasta do projeto**
 
-Acesse a pasta do projeto:
-
+```bash
 cd cardapio-pizzaria
+```
+
+**3. Abra a aplicação**
+
+Abra o arquivo `index.html` no navegador ou utilize a extensão Live Server do Visual Studio Code, caso seja compatível com a estrutura do projeto.
+
+Não é necessário instalar dependências de Node.js para executar uma aplicação composta apenas por arquivos estáticos de HTML, CSS e JavaScript.
+
+## 🎯 Objetivos do projeto
+
+* Desenvolver uma interface de cardápio digital.
+* Praticar a criação de interfaces com HTML e CSS.
+* Implementar interações e atualização dinâmica com JavaScript.
+* Organizar produtos por categorias e facilitar sua pesquisa.
+* Demonstrar conhecimentos de desenvolvimento front-end em um projeto prático.
+
+## 🔮 Possíveis melhorias futuras
+
+* Integração com WhatsApp para encaminhamento de pedidos.
+* Painel administrativo para gerenciamento de produtos.
+* Integração com banco de dados e API.
+* Persistência dos pedidos entre sessões.
+* Recursos adicionais para personalização de pizzas e complementos.
+
+*As funcionalidades desta seção são possibilidades de evolução e não fazem parte necessariamente da versão atual.*
+
+## 👨‍💻 Desenvolvido por
+
+**AW TECHNOLOGY — André Waldige**
+
+Desenvolvimento de soluções web, interfaces digitais e sistemas sob medida.
+
+* GitHub: [@awaldige](https://github.com/awaldige)
+* Portfólio: [andre-waldige.vercel.app](https://andre-waldige.vercel.app)
+
+---
+
+⭐ Se este projeto foi útil ou interessante para você, considere deixar uma estrela no repositório.
 
 
-Abra o arquivo index.html em qualquer navegador.
-
-Não é necessário backend ou servidor.
-
-🔮 Melhorias Futuras
-
-Possíveis evoluções do projeto:
-
-Layout totalmente responsivo para mobile
-
-Validação no processo de checkout
-
-Integração com backend para envio de pedidos
-
-Personalização de sabores e ingredientes
-
-Integração com WhatsApp para pedidos
-
-Sistema de login do cliente
 
 
-👨‍💻 Autor
 
-Desenvolvido por André Waldige
-Projeto criado para estudo e portfólio em desenvolvimento web.
+
+
