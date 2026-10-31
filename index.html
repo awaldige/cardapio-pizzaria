@@ -1,102 +1,451 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzaria AW - Cardápio Digital</title>
-    <link rel="icon" type="image/png" href="assets/img/logo-aw.png">
+
+    <meta
+        name="description"
+        content="Conheça o cardápio demonstrativo da Pizzaria AW: pizzas, bebidas e sobremesas em uma experiência digital moderna."
+    >
+
+    <meta name="theme-color" content="#111111">
+
+    <title>Pizzaria AW | Cardápio Digital Demonstrativo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/script.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <div class="logo-container">
-            <img src="assets/img/logo-aw.png" alt="Logo Pizzaria AW" class="logo">
+
+    <!-- Cabeçalho -->
+    <header class="site-header" id="inicio">
+        <div class="header-container">
+
+            <a href="#inicio" class="brand" aria-label="Pizzaria AW - Página inicial">
+                <img
+                    src="assets/img/logo-pizzaria-aw.png"
+                    alt="Logo da Pizzaria AW"
+                    class="brand-logo"
+                    width="64"
+                    height="64"
+                >
+
+                <span class="brand-text">
+                    <strong>PIZZARIA AW</strong>
+                    <small>TRADIÇÃO EM CADA FATIA</small>
+                </span>
+            </a>
+
+            <nav class="main-nav" aria-label="Navegação principal">
+                <a href="#menu">Cardápio</a>
+                <a href="#sobre">Nossa experiência</a>
+                <a href="#order-summary" class="nav-order">
+                    Meu pedido
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </nav>
+
         </div>
-        <nav aria-label="Navegação principal">
-            <a href="#menu">Cardápio</a>
-            <a href="#order-summary">Meu Pedido</a>
-        </nav>
     </header>
 
     <main>
-        <section id="search">
-            <h2>Busca Rápida</h2>
-            <input type="text" id="search-input" placeholder="O que você deseja comer?">
+
+        <!-- Apresentação principal com banner -->
+        <section class="hero" aria-labelledby="hero-title">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    SABOR QUE MARCA MOMENTOS
+                </span>
+
+                <h1 id="hero-title">
+                    Uma boa pizza.<br>
+                    <span>Uma experiência única.</span>
+                </h1>
+
+                <p>
+                    Ingredientes selecionados, combinações irresistíveis
+                    e o prazer de compartilhar bons momentos.
+                </p>
+
+                <a href="#menu" class="btn-primary">
+                    Explorar cardápio
+                    <span aria-hidden="true">→</span>
+                </a>
+
+                <div class="hero-highlights">
+                    <div class="highlight">
+                        <span class="highlight-icon" aria-hidden="true">✦</span>
+                        <span>Sabores especiais</span>
+                    </div>
+
+                    <div class="highlight">
+                        <span class="highlight-icon" aria-hidden="true">◷</span>
+                        <span>Feita para você</span>
+                    </div>
+                </div>
+
+                <p class="demo-notice">
+                    Projeto demonstrativo — pedidos e valores são fictícios.
+                </p>
+
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-image-frame">
+                    <img
+                        src="assets/img/banner-pizzaria-aw.jpg"
+                        alt="Pizza apetitosa preparada com ingredientes selecionados"
+                        class="hero-banner"
+                        fetchpriority="high"
+                    >
+                </div>
+
+                <div class="hero-badge" aria-hidden="true">
+                    <span>UMA FATIA</span>
+                    <strong>DE<br>FELICIDADE</strong>
+                </div>
+            </div>
+
+            <div class="hero-decoration" aria-hidden="true"></div>
+
         </section>
 
-        <section id="menu">
-            <div class="category-header">
-                <h3>🍕 Pizzas</h3>
-                <p class="category-info">Escolha o tamanho e monte sua combinação!</p>
-            </div>
-            <ul class="menu-list grid-layout" id="pizza-list"></ul>
+        <!-- Faixa informativa -->
+        <section class="benefits" aria-label="Diferenciais">
 
-            <div class="category-header">
-                <h3>🥤 Bebidas</h3>
+            <div class="benefit-item">
+                <span class="benefit-number">01</span>
+                <div>
+                    <strong>Ingredientes selecionados</strong>
+                    <p>Qualidade em cada combinação.</p>
+                </div>
             </div>
-            <ul class="menu-list grid-layout" id="drink-list"></ul>
 
-            <div class="category-header">
-                <h3>🍰 Sobremesas</h3>
+            <div class="benefit-item">
+                <span class="benefit-number">02</span>
+                <div>
+                    <strong>Sabores para todos</strong>
+                    <p>Opções para diferentes preferências.</p>
+                </div>
             </div>
-            <ul class="menu-list grid-layout" id="dessert-list"></ul>
+
+            <div class="benefit-item">
+                <span class="benefit-number">03</span>
+                <div>
+                    <strong>Seu pedido, do seu jeito</strong>
+                    <p>Monte sua combinação demonstrativa.</p>
+                </div>
+            </div>
+
         </section>
 
-       <section id="order-summary">
-    <h2>🛒 Meu Pedido</h2>
-    
-    <div class="checkout-fields" style="margin-bottom: 20px;">
-        <div class="field">
-            <label for="client-name">Seu Nome:</label>
-            <input type="text" id="client-name" placeholder="Como podemos te chamar?">
-        </div>
-    </div>
+        <!-- Cardápio -->
+        <section id="menu" class="menu-section">
 
-    <ul id="order-list"></ul>
-    
-    <div class="total-container">
-        <p>Total do Pedido: <strong>R$ <span id="total-price">0.00</span></strong></p>
-    </div>
-    
-    <div class="checkout-fields">
-        <div class="field">
-            <label for="payment">Forma de Pagamento:</label>
-            <select id="payment">
-                <option value="pix">PIX</option>
-                <option value="debito">Cartão de Débito</option>
-                <option value="credito">Cartão de Crédito</option>
-                <option value="dinheiro">Dinheiro</option>
-            </select>
-        </div>
-    </div>
-    
-    <button id="finalizar-pedido" class="btn-success">Finalizar Pedido via WhatsApp</button>
-</section>
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-kicker">ESCOLHA SEU FAVORITO</span>
+
+                    <h2>Nosso <span>cardápio</span></h2>
+
+                    <p>
+                        Encontre seu próximo sabor favorito entre nossas opções.
+                    </p>
+                </div>
+
+                <div class="menu-label">
+                    <span class="status-dot"></span>
+                    CARDÁPIO DIGITAL
+                </div>
+
+            </div>
+
+            <!-- Busca -->
+            <div class="search-container">
+                <span class="search-icon" aria-hidden="true">⌕</span>
+
+                <label class="visually-hidden" for="search-input">
+                    Buscar produtos no cardápio
+                </label>
+
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Buscar pizza, bebida ou sobremesa..."
+                    autocomplete="off"
+                >
+
+                <span class="search-shortcut" aria-hidden="true">BUSCAR</span>
+            </div>
+
+            <!-- Pizzas -->
+            <section class="menu-category" aria-labelledby="pizzas-title">
+
+                <div class="category-heading">
+                    <div class="category-icon" aria-hidden="true">◉</div>
+
+                    <div>
+                        <span class="category-kicker">NOSSA ESPECIALIDADE</span>
+                        <h3 id="pizzas-title">Pizzas</h3>
+                    </div>
+
+                    <span class="category-line"></span>
+                    <span class="category-count">SABORES ESPECIAIS</span>
+                </div>
+
+                <div id="pizza-list" class="product-grid"></div>
+
+            </section>
+
+            <!-- Bebidas -->
+            <section class="menu-category" aria-labelledby="drinks-title">
+
+                <div class="category-heading">
+                    <div class="category-icon" aria-hidden="true">◌</div>
+
+                    <div>
+                        <span class="category-kicker">PARA ACOMPANHAR</span>
+                        <h3 id="drinks-title">Bebidas</h3>
+                    </div>
+
+                    <span class="category-line"></span>
+                    <span class="category-count">REFRESCÂNCIA</span>
+                </div>
+
+                <div id="drink-list" class="product-grid"></div>
+
+            </section>
+
+            <!-- Sobremesas -->
+            <section class="menu-category" aria-labelledby="desserts-title">
+
+                <div class="category-heading">
+                    <div class="category-icon" aria-hidden="true">✧</div>
+
+                    <div>
+                        <span class="category-kicker">UM FINAL ESPECIAL</span>
+                        <h3 id="desserts-title">Sobremesas</h3>
+                    </div>
+
+                    <span class="category-line"></span>
+                    <span class="category-count">DOCE EXPERIÊNCIA</span>
+                </div>
+
+                <div id="dessert-list" class="product-grid"></div>
+
+            </section>
+
+        </section>
+
+        <!-- Pedido demonstrativo -->
+        <section id="order-summary" class="order-section">
+
+            <div class="order-intro">
+                <span class="section-kicker">QUASE LÁ</span>
+
+                <h2>Seu pedido <span>especial</span></h2>
+
+                <p>
+                    Confira os itens selecionados antes de finalizar
+                    seu pedido demonstrativo.
+                </p>
+            </div>
+
+            <div class="order-layout">
+
+                <div class="order-items-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="panel-kicker">RESUMO</span>
+                            <h3>Itens do pedido</h3>
+                        </div>
+
+                        <span class="order-bag-icon" aria-hidden="true">▤</span>
+                    </div>
+
+                    <ul id="order-list" class="order-list">
+                        <li class="empty-cart">
+                            <span class="empty-cart-icon" aria-hidden="true">＋</span>
+
+                            <strong>Seu pedido começa aqui</strong>
+
+                            <p>
+                                Escolha seus produtos no cardápio para adicioná-los.
+                            </p>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="checkout-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="panel-kicker">DEMONSTRAÇÃO</span>
+                            <h3>Seus dados</h3>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="client-name">Nome para o pedido</label>
+
+                        <input
+                            type="text"
+                            id="client-name"
+                            name="client-name"
+                            placeholder="Digite seu nome"
+                            autocomplete="name"
+                        >
+                    </div>
+
+                    <div class="form-field">
+                        <label for="payment">Forma de pagamento</label>
+
+                        <select id="payment" name="payment">
+                            <option value="">Selecione uma opção</option>
+                            <option value="Pix">Pix</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Cartão de crédito">Cartão de crédito</option>
+                            <option value="Cartão de débito">Cartão de débito</option>
+                        </select>
+                    </div>
+
+                    <div class="checkout-divider"></div>
+
+                    <div class="total-row">
+                        <span>Total demonstrativo</span>
+                        <strong id="total-price">R$ 0,00</strong>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="finalizar-pedido"
+                        class="btn-checkout"
+                    >
+                        <span>Finalizar pedido demonstrativo</span>
+                        <span aria-hidden="true">✓</span>
+                    </button>
+
+                    <p class="checkout-note">
+                        Esta função gera apenas uma confirmação fictícia.
+                        Nenhuma compra ou cobrança será realizada.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Sobre -->
+        <section id="sobre" class="experience-section">
+
+            <div class="experience-content">
+                <span class="section-kicker">MAIS QUE UMA REFEIÇÃO</span>
+
+                <h2>
+                    Bons momentos<br>
+                    começam à mesa.
+                </h2>
+
+                <p>
+                    Uma proposta de cardápio digital que combina praticidade,
+                    sabores variados e uma experiência de pedido simples.
+                </p>
+
+                <a href="#menu" class="text-link">
+                    Descubra nossos sabores
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+            <div class="experience-seal" aria-hidden="true">
+                <span>FEITO PARA</span>
+                <strong>COMPARTILHAR</strong>
+                <span>• BOM SABOR •</span>
+            </div>
+
+        </section>
+
     </main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Pizzaria AW</h4>
-                <p>Sabor inigualável e tradição em cada fatia.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Onde Estamos</h4>
-                <p>📍 Rua das Pizzas, nº 123</p>
-                <p>Bairro Gastronômico - São Paulo/SP</p>
-                <p>CEP: 01234-567</p>
-            </div>
-            <div class="footer-section">
-                <h4>Atendimento</h4>
-                <p>Segunda a Domingo</p>
-                <p><strong>18:00 às 23:30</strong></p>
-            </div>
+    <!-- Rodapé -->
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <a href="#inicio" class="brand footer-brand" aria-label="Pizzaria AW - Voltar ao início">
+                <img
+                    src="assets/img/logo-pizzaria-aw.png"
+                    alt=""
+                    class="brand-logo"
+                    width="56"
+                    height="56"
+                    loading="lazy"
+                >
+
+                <span class="brand-text">
+                    <strong>PIZZARIA AW</strong>
+                    <small>TRADIÇÃO EM CADA FATIA</small>
+                </span>
+            </a>
+
+            <p class="footer-description">
+                Um cardápio digital pensado para transformar a escolha
+                do seu próximo sabor em uma experiência especial.
+            </p>
+
+            <a href="#menu" class="footer-link">
+                Explorar cardápio <span aria-hidden="true">↑</span>
+            </a>
+
         </div>
-        <div class="copyright">
-            <p>&copy; 2026 Pizzaria AW - Todos os direitos reservados.</p>
+
+        <div class="footer-bottom">
+
+            <div class="footer-contact">
+                <h3>Contato demonstrativo</h3>
+
+                <p>
+                    <span class="contact-label">Telefone fictício:</span>
+                    <strong>(11) 0000-0000</strong>
+                </p>
+
+                <small>
+                    Número utilizado exclusivamente para demonstração.
+                    Não recebe ligações.
+                </small>
+            </div>
+
+            <p>
+                © <span id="current-year">2026</span> Pizzaria AW.
+                Projeto demonstrativo.
+            </p>
+
+            <p class="footer-credit">
+                Desenvolvido por <strong>AW TECHNOLOGY</strong>
+            </p>
+
         </div>
+
     </footer>
 
-    <script src="js/script.js" defer></script>
 </body>
 </html>
