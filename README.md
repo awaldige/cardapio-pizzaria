@@ -24,12 +24,15 @@ Importante: esta é uma demonstração de portfólio. Os produtos, preços e ped
 
 🖥️ Prévia do projeto
 
-Identidade visual
+<img width="1339" height="745" alt="home jpg" src="https://github.com/user-attachments/assets/93d8e387-9dc0-4f2b-9149-4e291ba73944" />
 
 
+<img width="1340" height="745" alt="carrinho jpg" src="https://github.com/user-attachments/assets/7711f2e4-d3f8-48ba-9d2e-4df6462748cf" />
 
-Logotipo
+<img width="1341" height="740" alt="cardapio jpg" src="https://github.com/user-attachments/assets/afb59837-ab92-46ae-9fd7-1e35e1a47bae" />
 
+
+<img width="1365" height="768" alt="finalização jpg" src="https://github.com/user-attachments/assets/22475ab6-680c-40d6-bd60-eeed7df6d114" />
 
 
 🌐 Demonstração online:
