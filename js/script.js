@@ -11,37 +11,44 @@
 // 1. CARDÁPIO
 // =========================================================
 
+
+
+/**
+ * BANCO DE DADOS DO CARDÁPIO
+ */
 const menuData = {
     pizzas: [
-        { name: "Margherita", price: 35.00 },
-        { name: "Mussarela", price: 30.00 },
-        { name: "Portuguesa", price: 38.00 },
-        { name: "Frango com Catupiry", price: 36.00 },
-        { name: "Pepperoni", price: 40.00 },
-        { name: "Calabresa", price: 32.00 },
-        { name: "Quatro Queijos", price: 42.00 },
-        { name: "Vegetariana", price: 35.00 },
-        { name: "Rúcula com Tomate Seco", price: 45.00 },
-        { name: "Atum", price: 38.00 },
-        { name: "Camarão", price: 60.00 },
-        { name: "Palmito", price: 42.00 }
+        { name: "Margherita", price: 35.00, image: "assets/img/pizzas/margherita.jpg" },
+        { name: "Mussarela", price: 30.00, image: "assets/img/pizzas/mussarela.jpg" },
+        { name: "Portuguesa", price: 38.00, image: "assets/img/pizzas/portuguesa.jpg" },
+        { name: "Frango com Catupiry", price: 36.00, image: "assets/img/pizzas/frango-com-catupiry.jpg" },
+        { name: "Pepperoni", price: 40.00, image: "assets/img/pizzas/pepperoni.jpg" },
+        { name: "Calabresa", price: 32.00, image: "assets/img/pizzas/calabresa.jpg" },
+        { name: "Quatro Queijos", price: 42.00, image: "assets/img/pizzas/quatro-queijos.jpg" },
+        { name: "Vegetariana", price: 35.00, image: "assets/img/pizzas/vegetariana.jpg" },
+        { name: "Rúcula com Tomate Seco", price: 45.00, image: "assets/img/pizzas/rucula-com-tomate-seco.jpg" },
+        { name: "Atum", price: 38.00, image: "assets/img/pizzas/atum.jpg" },
+        { name: "Camarão", price: 60.00, image: "assets/img/pizzas/camarao.jpg" },
+        { name: "Palmito", price: 42.00, image: "assets/img/pizzas/palmito.jpg" }
     ],
 
     drinks: [
-        { name: "Coca-Cola 2L", price: 12.00 },
-        { name: "Refrigerante Lata", price: 6.00 },
-        { name: "Suco Natural", price: 8.00 },
-        { name: "Água Mineral", price: 4.00 },
-        { name: "Cerveja lata", price: 6.00 },
-        { name: "Cerveja long neck", price: 8.00 }
+        { name: "Coca-Cola 2L", price: 12.00, image: "assets/img/bebidas/coca-cola-2l.jpg" },
+        { name: "Refrigerante Lata", price: 6.00, image: "assets/img/bebidas/refrigerante-lata.jpg" },
+        { name: "Suco Natural", price: 8.00, image: "assets/img/bebidas/suco-natural.jpg" },
+        { name: "Água Mineral", price: 4.00, image: "assets/img/bebidas/agua-mineral.jpg" },
+        { name: "Cerveja lata", price: 6.00, image: "assets/img/bebidas/cerveja-lata.jpg" },
+        { name: "Cerveja long neck", price: 8.00, image: "assets/img/bebidas/cerveja-long-neck.jpg" }
     ],
 
     desserts: [
-        { name: "Pudim de Leite", price: 12.00 },
-        { name: "Bolo de Chocolate", price: 15.00 },
-        { name: "Torta de Limão", price: 10.00 }
+        { name: "Pudim de Leite", price: 12.00, image: "assets/img/sobremesas/pudim-de-leite.jpg" },
+        { name: "Bolo de Chocolate", price: 15.00, image: "assets/img/sobremesas/bolo-de-chocolate.jpg" },
+        { name: "Torta de Limão", price: 10.00, image: "assets/img/sobremesas/torta-de-limao.jpg" }
     ]
 };
+
+
 
 const sizeModifiers = {
     grande: 1,
@@ -216,7 +223,14 @@ function renderCategory(items, container, isPizza) {
             <li
                 class="menu-item"
                 data-name="${item.name.toLocaleLowerCase("pt-BR")}"
-            >
+                       >
+                <img
+                    class="product-image"
+                    src="${item.image}"
+                    alt="${item.name}"
+                    loading="lazy"
+                >
+
                 <h4>${item.name}</h4>
 
                 ${pizzaOptions}

@@ -2145,3 +2145,29 @@ button {
         padding: 13px;
     }
 }
+
+/* =========================================
+   IMAGENS DOS PRODUTOS
+========================================= */
+
+.menu-item .product-image {
+    display: block;
+    width: 100%;
+    height: 190px;
+    margin-bottom: 18px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--radius-sm);
+    background: #222;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover .product-image {
+    transform: scale(1.02);
+}
+
+@media (max-width: 600px) {
+    .menu-item .product-image {
+        height: 180px;
+    }
+}
